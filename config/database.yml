@@ -1,20 +1,20 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: SQL_ASCII
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_NAME') { 'tfpullrequests_development' } %>
-  username: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_USER') { '' } %>
-  password: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_PASSWORD') { '' } %>
+  username: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_USER') { 'ubuntu' } %>
+  password: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_PASSWORD') { '123456789' } %>
   host: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_HOST') { 'localhost' } %>
 
 test:
   <<: *default
   database: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_NAME') { 'tfpullrequests_test' } %>
-  username: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_USER') { '' } %>
-  password: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_PASSWORD') { '' } %>
+  username: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_USER') { 'ubuntu' } %>
+  password: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_PASSWORD') { '123456789' } %>
   host: <%= ENV.fetch('TFPULLREQUESTS_DATABASE_HOST') { 'localhost' } %>
 
 production:
