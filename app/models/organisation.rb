@@ -2,10 +2,10 @@ class Organisation < ApplicationRecord
   has_and_belongs_to_many :users
   has_many :contributions, -> { order('created_at desc').for_aggregation }, through: :users
 
-  scope :with_any_contributions, -> { where('organisations.contribution_count > 0') }
+  scope :with_any_contributions, -> { where('organisations.contributions_count > 0') }
   scope :random, -> { order(Arel.sql("RANDOM()")) }
   scope :order_by_contributions, -> do
-    order('organisations.contribution_count desc, organisations.login asc')
+    order('organisations.contributions_count desc, organisations.login asc')
   end
 
   paginates_per 99
@@ -38,6 +38,6 @@ class Organisation < ApplicationRecord
   end
 
   def update_contribution_count
-    update_attribute(:contribution_count, contributions.year(Tfpullrequests::Application.current_year).count)
+    update_attribute(:contributions_count, contributions.year(Tfpullrequests::Application.current_year).count)
   end
 end
