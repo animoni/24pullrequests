@@ -8,8 +8,8 @@ describe Organisation, type: :model do
 
     ordered_organisations = Organisation.order_by_contributions
 
-    expect(ordered_organisations.first.contribution_count).to eq(6)
-    expect(ordered_organisations.last.contribution_count).to eq(2)
+    expect(ordered_organisations.first.contributions_count).to eq(6)
+    expect(ordered_organisations.last.contributions_count).to eq(2)
   end
 
   def setup_contribution_data
@@ -72,7 +72,7 @@ describe Organisation, type: :model do
     end
 
     describe '.contributions_count' do
-      subject { organisation.contribution_count }
+      subject { organisation.contributions_count }
 
       it 'should count only non-filtered pull requests' do
         is_expected.to eq(Contribution.all.count - 2)
